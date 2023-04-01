@@ -8,13 +8,10 @@ from src.repository.musician_repository import MusicianRepository
 
 class MusicianRepositoryTest(unittest.TestCase):
 
-    def test_should_get_musician(self):
+    def test_should_get_musician(self, musician_df):
         # given
         client = Mock()
-        client.retrieve_musician.return_value = pd.DataFrame({'name': ['kurt'],
-                                                              'surname': ['cobain'],
-                                                              'age': [27],
-                                                              'instrument': ['guitar']})
+        client.retrieve_musician.return_value = musician_df
         musician_repository = MusicianRepository(postgres_client=client)
 
         # when

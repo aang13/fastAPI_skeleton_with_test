@@ -7,13 +7,10 @@ from src.service.musician_service import MusicianService
 
 class MusicianServiceTest(unittest.TestCase):
 
-    def test_should_get_musician_by_name(self):
+    def test_should_get_musician_by_name(self, musician):
         # given
         musician_repository = Mock()
-        musician_repository.get_musician.return_value = Musician(name='kurt',
-                                                                 surname='cobain',
-                                                                 age=27,
-                                                                 instrument='guitar')
+        musician_repository.get_musician.return_value = musician
         external_musicians_client = Mock()
 
         musician_service = MusicianService(musician_repository=musician_repository,
